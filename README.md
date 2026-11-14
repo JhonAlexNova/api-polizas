@@ -60,6 +60,44 @@ Las solicitudes sin el encabezado o con una clave diferente responden `401 Unaut
 
 Las operaciones exitosas responden `200`, excepto la creación de riesgos, que responde `201`. Las validaciones responden `400`, los recursos inexistentes `404` y las operaciones incompatibles con las reglas de negocio `409`.
 
+
+## Colección Postman
+
+El proyecto incluye una colección de Postman para facilitar las pruebas de la API.
+
+**Ubicación:** `postman/API-Polizas-collection.json`
+
+### Cómo utilizarla
+
+1. Ejecutar el proyecto:
+
+   ```powershell
+   .\mvnw.cmd spring-boot:run
+   ```
+
+2. Abrir **Postman** y seleccionar **Import**.
+3. Importar el archivo `postman/API-Polizas-collection.json`.
+4. Verificar que la URL base sea `http://localhost:8080`.
+5. Ejecutar las peticiones disponibles.
+
+### Pruebas disponibles
+
+- Consultar y filtrar pólizas.
+- Consultar riesgos de una póliza.
+- Renovar pólizas aplicando el IPC.
+- Cancelar pólizas.
+- Agregar riesgos a pólizas colectivas.
+- Cancelar riesgos.
+- Registrar eventos en el CORE Mock.
+
+Todas las peticiones requieren el encabezado:
+
+```http
+x-api-key: 123456
+```
+
+**Nota:** La base de datos H2 funciona en memoria. Los datos se reinician cada vez que se vuelve a iniciar la aplicación.
+
 ## Ejemplos
 
 Renovar con un IPC de 5,2 %:
